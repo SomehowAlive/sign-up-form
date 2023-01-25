@@ -61,7 +61,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 5rem;
+  padding: 4em;
 }
 
 .description,
@@ -111,6 +111,10 @@ body {
 .inp {
   padding: 0.2rem 0.5rem;
   min-width: 220px;
+}
+
+.inp:focus {
+  outline: none;
 }
 
 #submit-btn {
