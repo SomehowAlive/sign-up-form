@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --main-color: #0095af;
+  --text-color: black;
+}
 
 * {
   padding: 0;
@@ -70,19 +74,21 @@ body {
   font-size: 2.3rem;
   font-family: "Poppins", sans-serif;
   font-weight: 800;
-  color: #0095af;
+  color: var(--main-color);
 }
 .input-section {
   display: flex;
   flex-flow: row wrap;
   padding: inherit;
-  margin: 1.5rem 0;
+  margin: 1.2rem 0;
 }
 .input-section-title {
   width: 100%;
   font-size: 1.5rem;
   font-weight: 700;
   font-family: "Poppins", sans-serif;
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
 }
 
 .input-section > li {
@@ -90,6 +96,7 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem 4rem;
   padding-left: 0;
   margin: 1rem 4rem;
@@ -97,5 +104,50 @@ body {
 }
 
 .input-section label {
-  font-weight: 200;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 300;
+  color: var(--text-color);
+}
+.inp {
+  padding: 0.2rem 0.5rem;
+  min-width: 220px;
+}
+
+#submit-btn {
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.7rem 3rem;
+  outline: none;
+  background-color: transparent;
+  border: 2px solid var(--main-color);
+  color: var(--main-color);
+  border-radius: 20px;
+  box-shadow: 0 0 0 0 var(--main-color);
+  transition: 0.4s ease;
+}
+#submit-btn:hover {
+  color: white;
+  box-shadow: 0 0 35px -12px var(--main-color);
+  background-color: var(--main-color);
+}
+.already p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+#login-link {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-color: #39b9cf;
+    --text-color: white;
+  }
+  body {
+    background-color: #061924;
+  }
 }
