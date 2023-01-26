@@ -68,6 +68,7 @@
                   id="phone-number"
                   name="phone-number"
                   placeholder="enter your phone number"
+                  pattern="\d{10}"
                   required
                 />
                 <p class="err-text"></p>
@@ -90,7 +91,8 @@
                 <label for="password-confirm">CONFIRM PASSWORD</label
                 ><input
                   type="password"
-                  class="inp"
+                  class="inp weird"
+                  name="confirm-password"
                   id="password-confirm"
                   placeholder="confirm your password"
                   minlength="8"
@@ -114,4 +116,49 @@
       </div>
     </div>
   </body>
+  <script>
+    const form = document.querySelector(".main-form");
+    const phoneInput = form["phone-number"];
+    const emailInput = form["email"];
+    const passInput = form["password"];
+    const confirmpassInput = form["confirm-password"];
+
+    phoneInput.addEventListener("focusout", (e) => {
+      phoneInput.nextElementSibling.innerText = !phoneInput.validity.valid
+        ? "Invalid phone number !"
+        : "";
+    });
+    phoneInput.addEventListener("input", (e) => {
+      if (phoneInput.validity.valid) phoneInput.nextElementSibling.innerText = "";
+    });
+
+    emailInput.addEventListener("focusout", (e) => {
+      emailInput.nextElementSibling.innerText = !emailInput.validity.valid
+        ? "Invalid email format !"
+        : "";
+    });
+    emailInput.addEventListener("input", (e) => {
+      if (emailInput.validity.valid) emailInput.nextElementSibling.innerText = "";
+    });
+
+    confirmpassInput.addEventListener("input", (e) => {
+      if (confirmpassInput.value === passInput.value && !passInput.validity.valid) {
+        confirmpassInput.nextElementSibling.innerText = "password too short";
+        confirmpassInput.style.boxShadow = "0 0 13px 0 rgb(223, 0, 0)";
+      } else if (confirmpassInput.value === passInput.value) {
+        confirmpassInput.nextElementSibling.innerText = "";
+        confirmpassInput.style.borderColor = "rgb(0, 138, 0)";
+        confirmpassInput.style.boxShadow = "0 0 13px 0 rgb(0, 212, 0)";
+      } else if (confirmpassInput !== "") {
+        confirmpassInput.nextElementSibling.innerText = "*Passwords doesn't match";
+        confirmpassInput.style.boxShadow = "0 0 13px 0 rgb(223, 0, 0)";
+      }
+    });
+    confirmpassInput.addEventListener("focusout", (e) => {
+      if (confirmpassInput.value !== passInput.value) {
+        confirmpassInput.style.borderColor = "rgb(255, 27, 27)";
+      } else confirmpassInput.style.borderColor = "rgb(0, 138, 0)";
+      confirmpassInput.style.boxShadow = "none";
+    });
+  </script>
 </html>

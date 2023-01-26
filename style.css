@@ -129,6 +129,13 @@ li {
   border-color: rgb(0, 138, 0);
 }
 
+.weird:not(:placeholder-shown):focus:valid {
+  box-shadow: none;
+}
+
+.weird:not(:placeholder-shown):focus:invalid {
+  box-shadow: none;
+}
 .err-text {
   color: red;
 }
@@ -197,4 +204,4 @@ li {
   .description {
     display: none;
   }
-} ;
+}
